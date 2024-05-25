@@ -1,4 +1,4 @@
-# zenn-article-fetcher
+# Zenn Article Fetcher
 
 [![release](https://badgen.net/github/release/ryohidaka/zenn-article-fetcher)](https://github.com/ryohidaka/zenn-article-fetcher/releases/)
 ![build](https://github.com/ryohidaka/zenn-article-fetcher/workflows/Build/badge.svg)
