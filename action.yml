@@ -2,13 +2,9 @@ name: "zenn-article-fetcher"
 description: ""
 author: "ryohidaka"
 inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
+  user-id:
+    description: ZennのユーザID (https://zenn.dev/{user-id}/feed)
     required: true
-    default: "World"
-outputs:
-  time: # id of output
-    description: "The time we greeted you"
 runs:
   using: "node20"
   main: "dist/index.js"

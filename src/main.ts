@@ -1,16 +1,12 @@
-const core = require("@actions/core");
-const github = require("@actions/github");
+import { fetchArticles } from "./utils";
 
-export function run() {
+const core = require("@actions/core");
+
+export async function run() {
   try {
-    // `who-to-greet` input defined in action metadata file
-    const nameToGreet = core.getInput("who-to-greet");
-    console.log(`Hello ${nameToGreet}!`);
-    const time = new Date().toTimeString();
-    core.setOutput("time", time);
-    // Get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload, undefined, 2);
-    console.log(`The event payload: ${payload}`);
+    // Zennの記事一覧を取得
+    const articles = await fetchArticles();
+    console.log(articles);
   } catch (error: any) {
     core.setFailed(error.message);
   }
