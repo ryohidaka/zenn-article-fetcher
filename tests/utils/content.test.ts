@@ -1,5 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { fetchArticles, generateInsertText } from "../../src/utils";
+import {
+  fetchArticles,
+  generateInsertText,
+  modifyContent,
+} from "../../src/utils";
 import { fetchZennArticles } from "zenn-rss";
 import { ZennArticle } from "zenn-rss/dist/types";
 
@@ -85,5 +89,49 @@ New article by Jane Smith: Test Article 2 (https://example.com/article2) - May 2
 
     // 出力が期待される出力と一致することを確認します
     expect(result).toBe(expectedOutput);
+  });
+});
+
+describe("modifyContent function", () => {
+  it("正しいデータが渡された場合、挿入が成功すること", () => {
+    const data = `
+      Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit.
+      <!-- [ZennArticles:START] -->
+      <!-- [ZennArticles:END] -->
+      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    `;
+    const insertText = "Inserted Text";
+    const expectedOutput = `
+      Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit.
+      <!-- [ZennArticles:START] -->
+Inserted Text
+<!-- [ZennArticles:END] -->
+      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    `;
+    expect(modifyContent(data, insertText)).toEqual(expectedOutput);
+  });
+
+  it("マーカーが見つからない場合、nullが返されること", () => {
+    const data = `
+      Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit.
+      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    `;
+    const insertText = "Inserted Text";
+    expect(modifyContent(data, insertText)).toBeNull();
+  });
+
+  it("マーカーの順序が正しくない場合、nullが返されること", () => {
+    const data = `
+      Lorem ipsum dolor sit amet,
+      <!-- END MARKER -->
+      consectetur adipiscing elit.
+      <!-- START MARKER -->
+      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    `;
+    const insertText = "Inserted Text";
+    expect(modifyContent(data, insertText)).toBeNull();
   });
 });
