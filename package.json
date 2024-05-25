@@ -1,0 +1,42 @@
+{
+  "name": "action-template",
+  "version": "0.0.1",
+  "description": "GitHub Action Template",
+  "main": "src/main.ts",
+  "scripts": {
+    "build": "ncc build --license licenses.txt",
+    "prepare": "npx husky install",
+    "test": "VITEST_MIN_THREADS=6 VITEST_MAX_THREADS=6 vitest run --passWithNoTests",
+    "coverage": "vitest run --coverage",
+    "format": "npx prettier . --write",
+    "docs": "npx typedoc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ryohidaka/action-template.git"
+  },
+  "keywords": [
+    "actions",
+    "node"
+  ],
+  "author": "ryohidaka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryohidaka/action-template/issues"
+  },
+  "homepage": "https://github.com/ryohidaka/action-template#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.8",
+    "@vercel/ncc": "^0.36.1",
+    "@vitest/coverage-istanbul": "^1.6.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-n": "^17.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.4.0"
+  }
+}

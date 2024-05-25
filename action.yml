@@ -1,0 +1,17 @@
+name: "Action Template"
+description: "Greet someone and record the time"
+author: "ryohidaka"
+inputs:
+  who-to-greet: # id of input
+    description: "Who to greet"
+    required: true
+    default: "World"
+outputs:
+  time: # id of output
+    description: "The time we greeted you"
+runs:
+  using: "node20"
+  main: "dist/index.js"
+branding:
+  icon: "file-text"
+  color: "green"
