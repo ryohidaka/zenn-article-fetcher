@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { fetchArticles } from "../../src/utils";
+import { fetchArticles, generateInsertText } from "../../src/utils";
 import { fetchZennArticles } from "zenn-rss";
+import { ZennArticle } from "zenn-rss/dist/types";
 
 // fetchZennArticles()関数のモック
 vi.mock("zenn-rss", () => ({
@@ -34,5 +35,55 @@ describe("fetchArticles", () => {
 
     // fetchZennArticles()が正しく呼び出されたことを確認
     expect(fetchZennArticles).toHaveBeenCalled();
+  });
+});
+
+describe("generateInsertText", () => {
+  it("正しい挿入テキストが生成されること", () => {
+    // getInputs()関数のモックを設定 (ここでは具体的な値を返す必要がある場合にモックする)
+    vi.mock("../../src/utils/input.ts", () => ({
+      getInputs: vi.fn().mockReturnValue({
+        template: "New article by %CREATOR%: %TITLE% (%LINK%) - %DATE%",
+        dateLocale: "en-US",
+      }),
+    }));
+
+    // テスト用のダミー記事データを作成します
+    const articles: ZennArticle[] = [
+      {
+        creator: "John Doe",
+        title: "Test Article 1",
+        link: "https://example.com/article1",
+        isoDate: "2024-05-25T12:00:00Z",
+        pubDate: "",
+        enclosure: {},
+        "dc:creator": "",
+        content: "",
+        contentSnippet: "",
+        guid: "",
+      },
+      {
+        creator: "Jane Smith",
+        title: "Test Article 2",
+        link: "https://example.com/article2",
+        isoDate: "2024-05-26T09:30:00Z",
+        pubDate: "",
+        enclosure: {},
+        "dc:creator": "",
+        content: "",
+        contentSnippet: "",
+        guid: "",
+      },
+    ];
+
+    // 関数を呼び出して挿入テキストを生成します
+    const result = generateInsertText(articles);
+
+    // 期待される出力を定義します
+    const expectedOutput = `New article by John Doe: Test Article 1 (https://example.com/article1) - May 25, 2024
+New article by Jane Smith: Test Article 2 (https://example.com/article2) - May 26, 2024`;
+
+    // 出力が期待される出力と一致することを確認します
+    expect(result).toBe(expectedOutput);
   });
 });
