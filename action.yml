@@ -5,6 +5,9 @@ inputs:
   user-id:
     description: ZennのユーザID (https://zenn.dev/{user-id}/feed)
     required: true
+  output:
+    description: 記事一覧を出力するマークダウンファイルのパス
+    required: true
   template:
     description: マークダウンに出力する際の出力形式
     required: false

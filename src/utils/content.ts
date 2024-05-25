@@ -1,4 +1,5 @@
 import { ZennArticle } from "zenn-rss/dist/types";
+import { MARKER } from "../constants";
 import { getInputs } from "./input";
 import { formatDateTime } from ".";
 import { fetchZennArticles } from "zenn-rss";
@@ -43,4 +44,30 @@ export const generateInsertText = (items: ZennArticle[]): string => {
     .join("\n");
 
   return insertText;
+};
+
+/**
+ * ファイルの内容に指定されたテキストを挿入
+ * @param data 元のファイルの内容
+ * @param insertText 挿入するテキスト
+ * @returns テキストが挿入された新しいファイルの内容。失敗した場合は null を返す。
+ */
+export const modifyContent = (
+  data: string,
+  insertText: string,
+): string | null => {
+  const { start, end } = MARKER;
+
+  const startIndex = data.indexOf(start);
+  const endIndex = data.indexOf(end);
+
+  if (startIndex === -1 || endIndex === -1 || startIndex >= endIndex) {
+    console.error("マーカーが見つからないか、順序が正しくありません。");
+    return null;
+  }
+
+  const beforeText = data.slice(0, startIndex + start.length);
+  const afterText = data.slice(endIndex);
+
+  return `${beforeText}\n${insertText}\n${afterText}`;
 };

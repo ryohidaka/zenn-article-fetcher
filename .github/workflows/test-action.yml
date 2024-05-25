@@ -22,5 +22,6 @@ jobs:
         id: hello
         with:
           user-id: "hidaka"
+          output: "example/zenn.md"
           template: "- [%DATE% %TITLE%](%LINK%)"
           date-format: "short"

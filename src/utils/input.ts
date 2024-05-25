@@ -8,11 +8,12 @@ const core = require("@actions/core");
  */
 export const getInputs = () => {
   const userId = core.getInput("user-id");
+  const filePath = core.getInput("output");
   const template = core.getInput("template");
   const dateFormatRaw = core.getInput("date-format");
   const dateLocale = core.getInput("date-locale");
 
   const dateFormat = parseDateFormat(dateFormatRaw);
 
-  return { userId, template, dateFormat, dateLocale };
+  return { userId, filePath, template, dateFormat, dateLocale };
 };
