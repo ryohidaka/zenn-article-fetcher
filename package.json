@@ -1,7 +1,7 @@
 {
-  "name": "action-template",
-  "version": "0.0.1",
-  "description": "GitHub Action Template",
+  "name": "zenn-article-fetcher",
+  "version": "0.0.0",
+  "description": "",
   "main": "src/main.ts",
   "scripts": {
     "build": "ncc build --license licenses.txt",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ryohidaka/action-template.git"
+    "url": "git+https://github.com/ryohidaka/zenn-article-fetcher.git"
   },
   "keywords": [
     "actions",
@@ -22,9 +22,9 @@
   "author": "ryohidaka",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ryohidaka/action-template/issues"
+    "url": "https://github.com/ryohidaka/zenn-article-fetcher/issues"
   },
-  "homepage": "https://github.com/ryohidaka/action-template#readme",
+  "homepage": "https://github.com/ryohidaka/zenn-article-fetcher#readme",
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@actions/github": "^6.0.0"

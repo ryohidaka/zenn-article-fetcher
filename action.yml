@@ -1,5 +1,5 @@
-name: "Action Template"
-description: "Greet someone and record the time"
+name: "zenn-article-fetcher"
+description: ""
 author: "ryohidaka"
 inputs:
   who-to-greet: # id of input
