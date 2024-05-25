@@ -1,3 +1,5 @@
+import { parseDateFormat } from "./date";
+
 const core = require("@actions/core");
 
 /**
@@ -6,5 +8,11 @@ const core = require("@actions/core");
  */
 export const getInputs = () => {
   const userId = core.getInput("user-id");
-  return { userId };
+  const template = core.getInput("template");
+  const dateFormatRaw = core.getInput("date-format");
+  const dateLocale = core.getInput("date-locale");
+
+  const dateFormat = parseDateFormat(dateFormatRaw);
+
+  return { userId, template, dateFormat, dateLocale };
 };

@@ -22,3 +22,5 @@ jobs:
         id: hello
         with:
           user-id: "hidaka"
+          template: "- [%DATE% %TITLE%](%LINK%)"
+          date-format: "short"

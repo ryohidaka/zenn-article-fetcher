@@ -5,6 +5,18 @@ inputs:
   user-id:
     description: ZennのユーザID (https://zenn.dev/{user-id}/feed)
     required: true
+  template:
+    description: マークダウンに出力する際の出力形式
+    required: false
+    default: "- [%TITLE%](%LINK%)"
+  date-format:
+    description: 日付を出力する際のフォーマット
+    required: false
+    default: "short"
+  date-locale:
+    description: 日付を出力する際のロケール設定
+    required: false
+    default: "zh"
 runs:
   using: "node20"
   main: "dist/index.js"
