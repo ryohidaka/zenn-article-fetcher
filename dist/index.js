@@ -33922,14 +33922,15 @@ const stageFile = () => __awaiter(void 0, void 0, void 0, function* () {
 const hasChanges = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { filePath } = (0, input_1.getInputs)();
-        yield exec.exec("git", ["diff", "--cached", "--quiet", filePath]);
-        return false;
+        let output = "";
+        yield exec.exec("git", ["status", "--short", filePath], {
+            listeners: {
+                stdout: (data) => (output += data.toString()),
+            },
+        });
+        return output.trim() !== "";
     }
-    catch (error) {
-        // コマンドが失敗した場合、変更がある
-        if (error) {
-            return true;
-        }
+    catch (_a) {
         return false;
     }
 });
@@ -33959,8 +33960,8 @@ const commitAndPush = () => __awaiter(void 0, void 0, void 0, function* () {
             return;
         }
         yield stageFile();
-        yield commitChanges();
-        yield pushChanges();
+        // await commitChanges();
+        // await pushChanges();
     }
     catch (error) {
         console.error(`Error: ${error.message}`);
