@@ -29,17 +29,20 @@ const stageFile = async () => {
 const hasChanges = async (): Promise<boolean> => {
   try {
     const { filePath } = getInputs();
+    let output = "";
 
-    await exec.exec("git", ["diff", "--cached", "--quiet", filePath]);
-    return false;
-  } catch (error: any) {
-    // コマンドが失敗した場合、変更がある
-    if (error) {
-      return true;
-    }
+    await exec.exec("git", ["status", "--short", filePath], {
+      listeners: {
+        stdout: (data: Buffer) => (output += data.toString()),
+      },
+    });
+
+    return output.trim() !== "";
+  } catch {
     return false;
   }
 };
+
 /**
  * 変更をコミットします。
  */
@@ -70,8 +73,8 @@ export const commitAndPush = async () => {
     }
 
     await stageFile();
-    await commitChanges();
-    await pushChanges();
+    // await commitChanges();
+    // await pushChanges();
   } catch (error: any) {
     console.error(`Error: ${error.message}`);
   }
