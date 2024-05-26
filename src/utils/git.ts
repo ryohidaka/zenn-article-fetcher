@@ -73,8 +73,8 @@ export const commitAndPush = async () => {
     }
 
     await stageFile();
-    // await commitChanges();
-    // await pushChanges();
+    await commitChanges();
+    await pushChanges();
   } catch (error: any) {
     console.error(`Error: ${error.message}`);
   }
