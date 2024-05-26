@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/ryohidaka/zenn-article-fetcher/compare/v0.1.1...v0.1.2) (2024-05-26)
+
+
+### Bug Fixes
+
+* 誤ってコメントアウトした箇所を修正 ([29f3648](https://github.com/ryohidaka/zenn-article-fetcher/commit/29f36486d8ecc28f052cb032c21b099d6184b631))
+
 ## [0.1.1](https://github.com/ryohidaka/zenn-article-fetcher/compare/v0.1.0...v0.1.1) (2024-05-26)
 
 
