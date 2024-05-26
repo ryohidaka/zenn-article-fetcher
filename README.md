@@ -10,7 +10,9 @@ Fetch articles from Zenn and output to markdown.
 
 Zenn の記事一覧を RSS から取得し、マークダウンファイルに出力する GitHub Action
 
-## Usage 　　(使用方法)
+## Usage (使用方法)
+
+1. GitHub Actions ワークフローを作成
 
 ```yml
 permissions:
@@ -20,6 +22,15 @@ uses: ryohidaka/zenn-article-fetcher@v1
 with:
   user-id: "zenn"
   output: "README.md"
+```
+
+2. 適用するマークダウンファイルにプレースホルダーを記載する
+
+```md
+# Zenn Articles
+
+<!-- [ZennArticles:START] -->
+<!-- [ZennArticles:END] -->
 ```
 
 ## Inputs
