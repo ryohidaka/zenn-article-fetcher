@@ -1,4 +1,9 @@
-import { fetchArticles, generateInsertText, readFileAndModify } from "./utils";
+import {
+  commitAndPush,
+  fetchArticles,
+  generateInsertText,
+  readFileAndModify,
+} from "./utils";
 
 const core = require("@actions/core");
 
@@ -12,6 +17,9 @@ export async function run() {
 
     // 生成したテキストをマークダウンに挿入する
     readFileAndModify(insertText);
+
+    // 変更をコミットする
+    commitAndPush();
   } catch (error: any) {
     core.setFailed(error.message);
   }

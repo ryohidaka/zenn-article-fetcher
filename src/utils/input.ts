@@ -12,8 +12,9 @@ export const getInputs = () => {
   const template = core.getInput("template");
   const dateFormatRaw = core.getInput("date-format");
   const dateLocale = core.getInput("date-locale");
+  const commitMessage = core.getInput("commit-message");
 
   const dateFormat = parseDateFormat(dateFormatRaw);
 
-  return { userId, filePath, template, dateFormat, dateLocale };
+  return { userId, filePath, template, dateFormat, dateLocale, commitMessage };
 };

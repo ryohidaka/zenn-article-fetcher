@@ -13,6 +13,9 @@ Zenn の記事一覧を RSS から取得し、マークダウンファイルに�
 ## Usage 　　(使用方法)
 
 ```yml
+permissions:
+  contents: write
+
 uses: ryohidaka/zenn-article-fetcher@v1
 with:
   user-id: "zenn"
@@ -21,13 +24,14 @@ with:
 
 ## Inputs
 
-| input         | required | default               | description                                                                       |
-| ------------- | -------- | --------------------- | --------------------------------------------------------------------------------- |
-| `user-id`     | ✔       |                       | Zenn のユーザ ID (https://zenn.dev/{user-id}/feed)                                |
-| `output`      | ✔       |                       | 記事一覧を出力するマークダウンファイルのパス                                      |
-| `template`    |          |                       | マークダウンに出力する際の出力形式 ([Template](#template)を参照)                  |
-| `date-format` |          | `- [%TITLE%](%LINK%)` | 日付を出力する際のフォーマット ([TEMPO](https://tempo.formkit.com/#format)を参照) |
-| `date-locale` |          | `zh`                  | 日付を出力する際のロケール設定 ([TEMPO](https://tempo.formkit.com/#format)を参照) |
+| input            | required | default                | description                                                                       |
+| ---------------- | -------- | ---------------------- | --------------------------------------------------------------------------------- |
+| `user-id`        | ✔       |                        | Zenn のユーザ ID (https://zenn.dev/{user-id}/feed)                                |
+| `output`         | ✔       |                        | 記事一覧を出力するマークダウンファイルのパス                                      |
+| `template`       |          |                        | マークダウンに出力する際の出力形式 ([Template](#template)を参照)                  |
+| `date-format`    |          | `- [%TITLE%](%LINK%)`  | 日付を出力する際のフォーマット ([TEMPO](https://tempo.formkit.com/#format)を参照) |
+| `date-locale`    |          | `zh`                   | 日付を出力する際のロケール設定 ([TEMPO](https://tempo.formkit.com/#format)を参照) |
+| `commit-message` |          | `Update Zenn Articles` | 更新したマークダウンをコミットする際のコミットメッセージ                          |
 
 ## Template
 

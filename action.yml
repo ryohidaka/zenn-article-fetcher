@@ -20,6 +20,10 @@ inputs:
     description: 日付を出力する際のロケール設定
     required: false
     default: "zh"
+  commit-message:
+    description: 更新したマークダウンをコミットする際のコミットメッセージ
+    required: false
+    default: "Update Zenn Articles"
 runs:
   using: "node20"
   main: "dist/index.js"
