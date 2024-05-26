@@ -6,7 +6,7 @@
   "scripts": {
     "build": "ncc build --license licenses.txt",
     "prepare": "npx husky install",
-    "test": "VITEST_MIN_THREADS=6 VITEST_MAX_THREADS=6 vitest run --passWithNoTests",
+    "test": "TZ=Asia/Tokyo VITEST_MIN_THREADS=6 VITEST_MAX_THREADS=6 vitest run --passWithNoTests",
     "coverage": "vitest run --coverage",
     "format": "npx prettier . --write",
     "docs": "npx typedoc"
