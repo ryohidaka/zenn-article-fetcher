@@ -33960,8 +33960,8 @@ const commitAndPush = () => __awaiter(void 0, void 0, void 0, function* () {
             return;
         }
         yield stageFile();
-        // await commitChanges();
-        // await pushChanges();
+        yield commitChanges();
+        yield pushChanges();
     }
     catch (error) {
         console.error(`Error: ${error.message}`);
