@@ -35,11 +35,11 @@
   "devDependencies": {
     "@types/node": "^20.14.12",
     "@vercel/ncc": "^0.38.1",
-    "@vitest/coverage-istanbul": "^1.6.0",
+    "@vitest/coverage-istanbul": "^2.0.5",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-n": "^17.10.2",
     "typescript": "^5.5.4",
-    "vitest": "^1.4.0"
+    "vitest": "^2.0.5"
   }
 }
