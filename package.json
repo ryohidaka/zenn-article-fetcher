@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.14.12",
-    "@vercel/ncc": "^0.38.1",
+    "@vercel/ncc": "^0.38.2",
     "@vitest/coverage-istanbul": "^1.6.0",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
