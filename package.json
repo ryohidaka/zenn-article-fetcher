@@ -33,7 +33,7 @@
     "zenn-rss": "^0.1.0"
   },
   "devDependencies": {
-    "@types/node": "^20.14.12",
+    "@types/node": "^22.8.7",
     "@vercel/ncc": "^0.38.2",
     "@vitest/coverage-istanbul": "^1.6.0",
     "eslint": "^9.14.0",
